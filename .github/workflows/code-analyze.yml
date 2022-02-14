@@ -1,6 +1,6 @@
 name: Code analyze
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   danger:
@@ -14,4 +14,3 @@ jobs:
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bundle exec danger
-
