@@ -11,3 +11,5 @@ warn("Big PR") if git.lines_of_code > 500
 # Don't let testing shortcuts get into master by accident
 fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
 fail("fit left in tests") if `grep -r fit specs/ `.length > 1
+
+warn("Modelのバリデーションを修正した場合は、既に保存されている既存データにinvalidなデータが無いかデプロイする前にチェックしてください。") if !github.pr_diff.grep(/^+validate/).empty?
