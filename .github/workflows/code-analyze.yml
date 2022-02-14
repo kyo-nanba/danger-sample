@@ -1,0 +1,16 @@
+name: Code analyze
+
+on:
+  pull_request:
+    types: synchronize
+
+jobs:
+  danger:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: run danger
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bundle exec danger
+
